@@ -12,9 +12,27 @@ const AppWrapper = styled.div`
   width: 100%;
 
   .status-board {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
     margin-bottom: 40px;
-    font-size: 20px;
-    font-weight: 700;
+
+    .status-board__info {
+      font-size: 20px;
+      font-weight: 700;
+      font-family: Helvetica;
+    }
+
+    .status-board__button {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      background-color: red;
+      border-radius: 10px;
+    }
   }
 `;
 
@@ -34,9 +52,17 @@ const App: React.FC = () => {
     <AppWrapper>
       {controller.gameStatus.inProgress ? (
         <>
-          <h2 className="status-board">
-            남은 지뢰 갯수 : {controller.mineCount}
-          </h2>
+          <div className="status-board">
+            <h2 className="status-board__info">
+              남은 지뢰 갯수 : {controller.mineCount}
+            </h2>
+            <button
+              className="status-board__button"
+              onClick={controller.initGame}
+            >
+              다시하기
+            </button>
+          </div>
           <MineBoard
             mineCells={controller.mainBoard.map(
               (value: number, idx: number) => (
