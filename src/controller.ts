@@ -65,6 +65,10 @@ export const useController = () => {
       return;
     }
 
+    if (!isMarked(targetIdx) && mineCount.count === 0) {
+      return;
+    }
+
     const { row, col } = getCoordinate(targetIdx, BOARD_LENGTH);
     setClickedPosition(undefined);
 
