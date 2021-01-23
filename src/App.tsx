@@ -64,6 +64,7 @@ const App: React.FC = () => {
             </button>
           </div>
           <MineBoard
+            boardLength={controller.boardLength}
             mineCells={controller.mainBoard.map(
               (value: number, idx: number) => (
                 <MineCell

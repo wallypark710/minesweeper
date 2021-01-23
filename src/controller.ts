@@ -6,10 +6,7 @@ import {
   MineDetectActions
 } from '@src/actions';
 
-import { getCoordinate } from '@src/util';
-
-const TOTAL_MINE = 10;
-const BOARD_LENGTH = 8;
+import { getCoordinate, BOARD_LENGTH, TOTAL_MINE } from '@src/util';
 
 export const useController = () => {
   const mineCount = useSelector((state: any) => state.mineDetect);
@@ -102,6 +99,7 @@ export const useController = () => {
     hasMine,
     mineCount: mineCount.count,
     clickCell,
-    toggleMarkCell
+    toggleMarkCell,
+    boardLength: BOARD_LENGTH
   };
 };
