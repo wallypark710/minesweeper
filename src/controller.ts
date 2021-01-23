@@ -5,13 +5,14 @@ import {
   GameStatusActions,
   MineDetectActions
 } from '@src/actions';
+import { RootState } from '@src/reducers';
 
 import { getCoordinate, BOARD_LENGTH, TOTAL_MINE } from '@src/util';
 
 export const useController = () => {
-  const mineCount = useSelector((state: any) => state.mineDetect);
-  const board = useSelector((state: any) => state.board);
-  const gameStatus = useSelector((state: any) => state.gameStatus);
+  const mineCount = useSelector((state: RootState) => state.mineDetect);
+  const board = useSelector((state: RootState) => state.board);
+  const gameStatus = useSelector((state: RootState) => state.gameStatus);
   const dispatch = useDispatch();
   const [clickedPosition, setClickedPosition] = useState<number | undefined>();
 
@@ -82,12 +83,12 @@ export const useController = () => {
 
   const isOpen = (targetIdx: number) => {
     const { row, col } = getCoordinate(targetIdx, BOARD_LENGTH);
-    return board.openBoard[row][col];
+    return !!board.openBoard[row][col];
   };
 
   const isMarked = (targetIdx: number) => {
     const { row, col } = getCoordinate(targetIdx, BOARD_LENGTH);
-    return board.markBoard[row][col];
+    return !!board.markBoard[row][col];
   };
 
   return {
